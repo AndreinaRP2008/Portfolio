@@ -13,3 +13,6 @@ const style=document.createElement('style');style.textContent=`#contactForm .for
 const form=document.querySelector('#contactForm');const status=document.querySelector('#formStatus');
 form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;status.className='form-status';status.textContent='Enviando…';const button=form.querySelector('button[type="submit"]');button.disabled=true;button.style.opacity='.55';try{const response=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});if(!response.ok)throw new Error('send');status.textContent='¡Mensaje enviado! Te responderé lo antes posible.';form.reset()}catch(error){status.className='form-status error';status.textContent='No se pudo enviar. Puedes escribirme directamente por email.'}finally{button.disabled=false;button.style.opacity='1'}});
 }
+
+/* Las capturas se subieron en PNG. Normalizamos las rutas para que las tarjetas funcionen aunque el HTML antiguo use .webp. */
+document.querySelectorAll('img[src$=".webp"]').forEach(img=>{img.src=img.src.replace(/\.webp$/i,'.png')});
