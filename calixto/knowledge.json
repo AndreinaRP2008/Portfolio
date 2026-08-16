@@ -1,0 +1,20 @@
+{
+  "name": "Calixto",
+  "owner": "Gabriela Rodríguez",
+  "role": "Web Developer & Freelance Designer",
+  "location": "España",
+  "email": "webdeveloperagrp@gmail.com",
+  "whatsapp": "+34 610 069 738",
+  "instagram": "@webdeveloperagrp",
+  "github": "AndreinaRP2008",
+  "services": ["Diseño y desarrollo web", "Webs para negocios", "Tiendas online", "Desarrollo personalizado", "WordPress", "Rediseño y mantenimiento"],
+  "technologies": ["HTML", "CSS", "JavaScript", "React", "WordPress", "Git", "GitHub"],
+  "prices": ["Landing Page desde 150 €", "Web profesional desde 300 €", "Tienda online desde 500 €", "Proyecto personalizado: presupuesto personalizado"],
+  "projects": [
+    {"name":"Zory's Creaciones","type":"Negocio / catálogo","url":"https://andreinarp2008.github.io/Zory-s-Creaciones/"},
+    {"name":"Mi Tienda Online","type":"E-commerce","url":"https://andreinarp2008.github.io/Mitiendaonline.git.io/"},
+    {"name":"Sweet Delights","type":"Repostería artesanal","url":"https://andreinarp2008.github.io/Sweet-Delights-Reposter-a-Artesanal/"},
+    {"name":"Coffee Studio","type":"Cafetería","url":"https://andreinarp2008.github.io/coffe-.github.io/"},
+    {"name":"Marvel Universe","type":"Proyecto personal","url":"https://andreinarp2008.github.io/marvel.github.io/"}
+  ]
+}
