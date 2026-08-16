@@ -1,0 +1,18 @@
+{
+  "name": "Gabriela Rodríguez — Web Developer Freelance",
+  "short_name": "Gabriela Rodríguez",
+  "description": "Portfolio profesional de Gabriela Rodríguez, Web Developer & Freelance Designer.",
+  "start_url": "/Portfolio/",
+  "display": "standalone",
+  "background_color": "#080909",
+  "theme_color": "#080909",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/Portfolio/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
