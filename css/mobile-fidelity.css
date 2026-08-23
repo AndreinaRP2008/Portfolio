@@ -1,0 +1,82 @@
+/* Mobile visual fidelity: mantiene la escala editorial del portfolio de escritorio */
+@media (max-width: 760px){
+  .container{width:calc(100% - 28px);max-width:none}
+  .hero{min-height:calc(100svh - 76px);padding-top:9vh}
+  .hero-meta{font-size:9px;gap:12px}
+  .eyebrow{margin-top:8vh;font-size:10px}
+  .hero h1{font-size:clamp(52px,16.5vw,86px);line-height:.86;letter-spacing:-.07em;margin-top:22px}
+  .hero-bottom{padding-bottom:30px;gap:22px}
+  .hero-bottom p{max-width:275px;font-size:13px;line-height:1.6}
+  .circle-arrow{width:58px;height:58px;flex-basis:58px;font-size:21px}
+  .intro,.services,.work,.mini-work,.tech,.process,.pricing,.testimonial{padding:84px 0}
+  .intro-content,.section-intro,.mini-head,.contact-grid{gap:34px}
+  .intro h2,.section-head h2,.section-intro h2,.testimonial h2,.contact-title h2{font-size:clamp(50px,15vw,76px);line-height:.9;letter-spacing:-.065em}
+  .intro-copy p,.section-intro>p{font-size:15px;line-height:1.7}
+  .stats{gap:18px;margin-top:34px;flex-wrap:nowrap}
+  .stats strong{font-size:31px}
+  .stats span{font-size:8px;line-height:1.45}
+  .about-photo img{width:min(62vw,245px)}
+  .section-head{margin-bottom:38px;gap:16px}
+  .count{font-size:9px}
+  .services-grid{grid-template-columns:1fr}
+  .service{min-height:190px;padding:26px 22px}
+  .service h3{font-size:26px;margin:34px 0 11px;padding-right:42px}
+  .service p{font-size:14px;line-height:1.65;max-width:500px}
+  .service b{right:22px;top:26px;font-size:21px}
+  .projects{grid-template-columns:1fr;gap:42px}
+  .project-large{grid-column:span 1}
+  .project-visual{height:340px;padding:22px}
+  .project-large .project-visual{height:390px}
+  .project-visual strong{font-size:clamp(48px,13vw,66px);line-height:.82}
+  .project-visual span{font-size:9px}
+  .project-visual i{right:22px;bottom:20px;font-size:25px}
+  .project-info{display:flex;flex-direction:column;gap:9px;padding:16px 0}
+  .project-info h3{font-size:18px}
+  .project-info p{font-size:13px;line-height:1.55}
+  .project-info>span{font-size:8px;white-space:normal}
+  .more-work{padding:25px 0;gap:12px;line-height:1.5}
+  .mini-head{margin:40px 0}
+  .mini-head h2{font-size:clamp(48px,14vw,70px)}
+  .mini-head p{font-size:14px;line-height:1.65}
+  .mini-grid{grid-template-columns:1fr}
+  .mini-grid>a,.mini-grid .coming{padding:24px 22px;min-height:155px}
+  .mini-grid h3{font-size:23px;margin:26px 0 14px}
+  .mini-grid span,.mini-grid b,.coming b{font-size:9px}
+  .bottom-info{margin-top:44px}
+  .bottom-info>div{padding:24px 0}
+  .bottom-info h3{font-size:19px}
+  .bottom-info p{font-size:13px;line-height:1.65}
+  .contact{padding:88px 0}
+  .contact-grid{gap:42px}
+  .contact-modern .contact-title h2{font-size:clamp(58px,17vw,92px);line-height:.84}
+  .contact-modern .contact-title p{font-size:15px;line-height:1.65;margin-top:26px}
+  .social-grid{grid-template-columns:1fr;margin-top:45px;gap:12px}
+  .social-card{min-height:92px;padding:20px 22px}
+  .social-copy strong{font-size:17px}
+  .email-cta{margin-top:32px}
+  .footer{padding:32px 0 24px}
+  .footer-top{gap:22px}
+  .footer-links{gap:14px 18px}
+  .footer-bottom{margin-top:42px;gap:14px}
+}
+@media (max-width: 420px){
+  .container{width:calc(100% - 24px)}
+  .hero{padding-top:7vh}
+  .hero h1{font-size:clamp(48px,16vw,68px)}
+  .hero-bottom p{max-width:230px;font-size:12px}
+  .circle-arrow{width:52px;height:52px;flex-basis:52px}
+  .intro,.services,.work,.mini-work,.tech,.process,.pricing,.testimonial{padding:72px 0}
+  .intro h2,.section-head h2,.section-intro h2,.testimonial h2{font-size:clamp(45px,14.5vw,62px)}
+  .stats{gap:13px}
+  .stats strong{font-size:28px}
+  .stats span{font-size:7px}
+  .service{padding:24px 20px;min-height:180px}
+  .service h3{font-size:24px}
+  .project-visual{height:320px;padding:20px}
+  .project-large .project-visual{height:365px}
+  .project-visual strong{font-size:clamp(44px,13vw,58px)}
+  .mini-grid>a,.mini-grid .coming{min-height:145px;padding:22px 20px}
+  .contact{padding:76px 0}
+  .contact-modern .contact-title h2{font-size:clamp(52px,16.5vw,76px)}
+  .social-card{min-height:88px;padding:18px 20px}
+}
