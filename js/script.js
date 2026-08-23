@@ -3,6 +3,9 @@ const revealItems=document.querySelectorAll('.section-label,.intro-content,.sect
 /* Menú móvil: navegación desplegable con cierre al tocar un enlace, fuera del menú o Escape. */
 const menu=document.querySelector('.menu-btn');const links=document.querySelector('.nav-links');if(menu&&links){menu.setAttribute('type','button');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-controls','mobile-navigation');links.id='mobile-navigation';const closeMenu=()=>{links.classList.remove('open');document.body.classList.remove('menu-open');menu.classList.remove('is-open');menu.setAttribute('aria-expanded','false')};const toggleMenu=()=>{const open=!links.classList.contains('open');links.classList.toggle('open',open);document.body.classList.toggle('menu-open',open);menu.classList.toggle('is-open',open);menu.setAttribute('aria-expanded',String(open))};menu.addEventListener('click',toggleMenu);menu.addEventListener('touchend',e=>{e.preventDefault();toggleMenu()},{passive:false});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});document.addEventListener('click',e=>{if(!links.contains(e.target)&&!menu.contains(e.target))closeMenu()})}
 
+/* URL limpia: los enlaces "Volver arriba" llevan al inicio sin dejar #top en la barra. */
+document.querySelectorAll('a[href="#top"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();history.replaceState(null,'',window.location.pathname+window.location.search);window.scrollTo({top:0,behavior:'smooth'})})});if(window.location.hash==='#top'){history.replaceState(null,'',window.location.pathname+window.location.search);window.scrollTo(0,0)}
+
 /* Contacto: GitHub Pages es estático. FormSubmit entrega los mensajes al email indicado. */
 const contactBox=document.querySelector('.contact-form');
 if(contactBox){
