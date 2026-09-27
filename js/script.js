@@ -15,3 +15,7 @@ document.querySelectorAll('img[src$=".webp"]').forEach(img=>{img.src=img.src.rep
 
 /* CALIXTO: asistente local 24/7, sin API key ni envío de conversaciones a terceros. */
 const calixto=document.createElement('script');calixto.src='calixto/calixto.js';calixto.defer=true;document.body.appendChild(calixto);
+/* Contacto: el contenido aparece con un pequeño scroll, creando una segunda escena. */
+const contactSection=document.querySelector('#contact');
+const contactModern=document.querySelector('.contact-modern');
+if(contactSection&&contactModern){const updateContactReveal=()=>{const revealAt=contactSection.offsetTop+90;contactModern.classList.toggle('contact-revealed',window.scrollY>=revealAt)};window.addEventListener('scroll',updateContactReveal,{passive:true});window.addEventListener('resize',updateContactReveal);updateContactReveal()}
