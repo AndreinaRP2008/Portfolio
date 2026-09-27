@@ -9,8 +9,67 @@ document.querySelectorAll('a[href="#top"]').forEach(a=>{a.addEventListener('clic
 /* Contacto: GitHub Pages es estático. FormSubmit entrega los mensajes al email indicado. */
 const contactBox=document.querySelector('.contact-form');
 if(contactBox){
-contactBox.innerHTML=`<form id="contactForm" action="https://formsubmit.co/webdeveloperagrp@gmail.com" method="POST" novalidate><input type="hidden" name="_subject" value="Nuevo proyecto desde tu portfolio — Gabriela Rodríguez"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="true"><input type="hidden" name="_next" value="https://andreinarp2008.github.io/Portfolio/#contact"><div class="form-row"><label for="contactName">NOMBRE</label><input id="contactName" name="name" type="text" placeholder="Tu nombre" autocomplete="name" required></div><div class="form-row"><label for="contactEmail">EMAIL</label><input id="contactEmail" name="email" type="email" placeholder="tu@email.com" autocomplete="email" required></div><div class="form-row"><label for="contactService">SERVICIO</label><select id="contactService" name="service" required><option value="" selected disabled>Selecciona un servicio</option><option>Diseño y desarrollo web</option><option>Webs para negocios</option><option>Tiendas online</option><option>Desarrollo personalizado</option><option>WordPress</option><option>Rediseño y mantenimiento</option></select></div><div class="form-row tall"><label for="contactMessage">PROYECTO</label><textarea id="contactMessage" name="message" placeholder="Cuéntame qué tienes en mente..." required></textarea></div><button class="submit" type="submit">Enviar email <span>↗</span></button><p id="formStatus" class="form-status" role="status" aria-live="polite"></p></form>`;const style=document.createElement('style');style.textContent=`#contactForm .form-row label{font:9px 'DM Mono',monospace;color:var(--muted)}#contactForm input,#contactForm textarea,#contactForm select{width:100%;border:0;outline:0;background:transparent;color:var(--text);font:15px Manrope,Arial,sans-serif;padding:0}#contactForm select{appearance:none;cursor:pointer}#contactForm select option{background:#101211;color:#f3f3ed}#contactForm input::placeholder,#contactForm textarea::placeholder{color:#666}#contactForm textarea{min-height:76px;resize:vertical;line-height:1.5}.form-status{min-height:18px;margin:13px 0 0;font:10px 'DM Mono',monospace;color:var(--accent);line-height:1.5}.form-status.error{color:#ff7b7b}.submit{font-family:'DM Mono',monospace;cursor:pointer;background:transparent;color:var(--text)}.submit:disabled{opacity:.55;cursor:wait}`;document.head.appendChild(style);const form=document.querySelector('#contactForm');const status=document.querySelector('#formStatus');const serviceSelect=document.querySelector('#contactService');document.querySelectorAll('.service-link').forEach(card=>{card.addEventListener('click',()=>{const service=card.dataset.service;const contactModern=document.querySelector('.contact-modern');if(contactModern){contactModern.classList.remove('contact-ready');contactModern.classList.add('contact-scroll-reveal');const reveal=()=>{contactModern.classList.add('contact-ready');contactModern.removeEventListener('wheel',onWheel);contactModern.removeEventListener('touchmove',onTouchMove)};const onWheel=e=>{if(e.deltaY>0)reveal()};let touchStartY=0;const onTouchMove=e=>{if(touchStartY-e.touches[0].clientY>8)reveal()};contactModern.addEventListener('wheel',onWheel,{passive:true});contactModern.addEventListener('touchstart',e=>{touchStartY=e.touches[0].clientY},{passive:true});contactModern.addEventListener('touchmove',onTouchMove,{passive:true})}if(serviceSelect)serviceSelect.value=service;const message=form.querySelector('#contactMessage');if(message&&!message.value.trim())message.value=`Hola, estoy interesado/a en el servicio de ${service}. Me gustaría contaros mi proyecto y conocer las opciones disponibles.`;setTimeout(()=>{if(message)message.focus()},450)})});form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;status.className='form-status';status.textContent='Enviando…';const button=form.querySelector('button[type="submit"]');button.disabled=true;try{const response=await fetch('https://formsubmit.co/ajax/webdeveloperagrp@gmail.com',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});let data={};try{data=await response.json()}catch{}if(!response.ok||data.success===false)throw new Error('send');status.textContent='¡Mensaje enviado! Te responderé lo antes posible.';form.reset()}catch(error){status.className='form-status error';status.textContent='No se pudo enviar automáticamente. Abriendo el envío seguro…';setTimeout(()=>{HTMLFormElement.prototype.submit.call(form)},700)}finally{button.disabled=false}})}
+contactBox.innerHTML=`<form id="contactForm" action="https://formsubmit.co/webdeveloperagrp@gmail.com" method="POST" novalidate><input type="hidden" name="_subject" value="Nuevo proyecto desde tu portfolio — Gabriela Rodríguez"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="true"><input type="hidden" name="_next" value="https://andreinarp2008.github.io/Portfolio/#contact"><div class="form-row"><label for="contactName">NOMBRE</label><input id="contactName" name="name" type="text" placeholder="Tu nombre" autocomplete="name" required></div><div class="form-row"><label for="contactEmail">EMAIL</label><input id="contactEmail" name="email" type="email" placeholder="tu@email.com" autocomplete="email" required></div><div class="form-row"><label for="contactService">SERVICIO</label><select id="contactService" name="service" required><option value="" selected disabled>Selecciona un servicio</option><option>Diseño y desarrollo web</option><option>Webs para negocios</option><option>Tiendas online</option><option>Desarrollo personalizado</option><option>WordPress</option><option>Rediseño y mantenimiento</option></select></div><div class="form-row tall"><label for="contactMessage">PROYECTO</label><textarea id="contactMessage" name="message" placeholder="Cuéntame qué tienes en mente..." required></textarea></div><button class="submit" type="submit">Enviar email <span>↗</span></button><p id="formStatus" class="form-status" role="status" aria-live="polite"></p></form>`;
+const style=document.createElement('style');
+style.textContent=`#contactForm .form-row label{font:9px 'DM Mono',monospace;color:var(--muted)}#contactForm input,#contactForm textarea,#contactForm select{width:100%;border:0;outline:0;background:transparent;color:var(--text);font:15px Manrope,Arial,sans-serif;padding:0}#contactForm select{appearance:none;cursor:pointer}#contactForm select option{background:#101211;color:#f3f3ed}#contactForm input::placeholder,#contactForm textarea::placeholder{color:#666}#contactForm textarea{min-height:76px;resize:vertical;line-height:1.5}.form-status{min-height:18px;margin:13px 0 0;font:10px 'DM Mono',monospace;color:var(--accent);line-height:1.5}.form-status.error{color:#ff7b7b}.submit{font-family:'DM Mono',monospace;cursor:pointer;background:transparent;color:var(--text)}.submit:disabled{opacity:.55;cursor:wait}`;
+document.head.appendChild(style);
+}
+const form=document.querySelector('#contactForm');
+const status=document.querySelector('#formStatus');
+const serviceSelect=document.querySelector('#contactService');
 
+/* Servicios → Contacto: la segunda escena solo se activa al llegar desde una tarjeta de servicio. */
+document.querySelectorAll('.service-link').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const service=card.dataset.service;
+    const contactModern=document.querySelector('.contact-modern');
+    if(contactModern){
+      contactModern.classList.remove('contact-ready');
+      contactModern.classList.add('contact-scroll-reveal');
+      window.setTimeout(()=>{
+        contactModern.scrollIntoView({behavior:'smooth',block:'start'});
+      },30);
+      const reveal=()=>{
+        contactModern.classList.add('contact-ready');
+        window.removeEventListener('wheel',onWheel);
+        window.removeEventListener('touchmove',onTouchMove);
+        window.removeEventListener('keydown',onKeyDown);
+      };
+      const onWheel=e=>{if(e.deltaY>0)reveal()};
+      const onTouchMove=e=>{if(e.touches.length&&window._contactTouchStartY-e.touches[0].clientY>8)reveal()};
+      const onKeyDown=e=>{if(['ArrowDown','PageDown',' '].includes(e.key))reveal()};
+      window._contactTouchStartY=0;
+      window.addEventListener('wheel',onWheel,{passive:true});
+      window.addEventListener('touchstart',e=>{if(e.touches.length)window._contactTouchStartY=e.touches[0].clientY},{passive:true});
+      window.addEventListener('touchmove',onTouchMove,{passive:true});
+      window.addEventListener('keydown',onKeyDown);
+    }
+    if(serviceSelect)serviceSelect.value=service;
+    const message=form&&form.querySelector('#contactMessage');
+    if(message&&!message.value.trim())message.value=`Hola, estoy interesado/a en el servicio de ${service}. Me gustaría contaros mi proyecto y conocer las opciones disponibles.`;
+    setTimeout(()=>{if(message)message.focus()},450);
+  });
+});
+
+if(form){
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!form.reportValidity())return;
+  if(status){status.className='form-status';status.textContent='Enviando…'}
+  const button=form.querySelector('button[type="submit"]');
+  if(button)button.disabled=true;
+  try{
+    const response=await fetch('https://formsubmit.co/ajax/webdeveloperagpr@gmail.com',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    let data={};try{data=await response.json()}catch{}
+    if(!response.ok||data.success===false)throw new Error('send');
+    if(status){status.textContent='¡Mensaje enviado! Te responderé lo antes posible.'}
+    form.reset();
+  }catch(error){
+    if(status){status.className='form-status error';status.textContent='No se pudo enviar automáticamente. Abriendo el envío seguro…'}
+    setTimeout(()=>{HTMLFormElement.prototype.submit.call(form)},700);
+  }finally{if(button)button.disabled=false}
+});
+}
 document.querySelectorAll('img[src$=".webp"]').forEach(img=>{img.src=img.src.replace(/\.webp$/i,'.png')});
 
 /* CALIXTO: asistente local 24/7, sin API key ni envío de conversaciones a terceros. */
