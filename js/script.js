@@ -15,27 +15,3 @@ document.querySelectorAll('img[src$=".webp"]').forEach(img=>{img.src=img.src.rep
 
 /* CALIXTO: asistente local 24/7, sin API key ni envío de conversaciones a terceros. */
 const calixto=document.createElement('script');calixto.src='calixto/calixto.js';calixto.defer=true;document.body.appendChild(calixto);
-/* Contacto: el contenido aparece después del primer pequeño scroll dentro de la sección. */
-const contactSection=document.querySelector('#contact');
-const contactModern=document.querySelector('.contact-modern');
-if(contactSection&&contactModern){
-let contactStartY=null;
-const revealContact=()=>contactModern.classList.add('contact-revealed');
-const checkContactScroll=()=>{
-const top=contactSection.getBoundingClientRect().top;
-if(top<=20 && top>-window.innerHeight*0.25){
-if(contactStartY===null)contactStartY=window.scrollY;
-if(window.scrollY-contactStartY>=18)revealContact();
-}else if(top>window.innerHeight*0.25){
-contactStartY=null;
-}
-};
-window.addEventListener('scroll',checkContactScroll,{passive:true});
-window.addEventListener('resize',checkContactScroll);
-contactSection.addEventListener('wheel',e=>{if(e.deltaY>0&&contactSection.getBoundingClientRect().top<120)revealContact()},{passive:true});
-let touchStartY=null;
-contactSection.addEventListener('touchstart',e=>{touchStartY=e.touches[0].clientY},{passive:true});
-contactSection.addEventListener('touchmove',e=>{if(touchStartY!==null&&touchStartY-e.touches[0].clientY>8)revealContact()},{passive:true});
-checkContactScroll();
-}
-
